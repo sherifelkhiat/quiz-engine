@@ -8,6 +8,24 @@
         <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
         <meta name="csrf-token" value="{{ csrf_token() }}" />
     </head>
+    <style>
+        .quiz{
+            height: 100vh;
+        background-repeat: no-repeat;
+        background-image: url("http://quizengine.host/uploads/php72Fs0r.jpg");
+        text-align: center;
+        color: #FFF;
+        background-size: cover;
+        padding: 200px 0px;
+        font-weight: bold;
+        }
+        .quiz h1{
+            font-size: 50px;
+        }
+        .container-fluid{
+            padding: 0px;
+        }
+    </style>
     <body>
         <div id="quiz">
         </div>

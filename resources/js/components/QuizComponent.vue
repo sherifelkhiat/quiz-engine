@@ -1,27 +1,14 @@
 <template>
-  <div>
-    <h1>Edit Post</h1>
-    <form @submit.prevent="updatePost">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Post Title:</label>
-            
-          </div>
-        </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Post Body:</label>
-              
-            </div>
-          </div>
-        </div><br />
-        <div class="form-group">
-          <button class="btn btn-primary">Update</button>
-        </div>
-    </form>
+  <div class="quiz" v-bind:style="{ backgroundImage: 'url(' + quiz.image + ')' }" style="height: 100vh;background-repeat:no-repeat;">
+      <h1>{{ quiz.title }}</h1>
+      <p>{{ quiz.description }}</p>
+
+      <div v-if="quiz.question">
+          <router-link :to="{ name: 'question', params: { id: quiz.id }}" class="btn btn-success">Start Quiz</router-link>
+      </div>
+      <div v-else>
+        <p>No Question available</p>
+      </div>
   </div>
 </template>
 
@@ -37,6 +24,7 @@
         let uri = `/api/quiz/${this.$route.params.id}`;
         this.axios.get(uri).then((response) => {
             this.quiz = response.data.success;
+            console.log(this.questionExist);
         });
       }
     }

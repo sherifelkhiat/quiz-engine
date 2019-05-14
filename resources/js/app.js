@@ -14,6 +14,8 @@ Vue.use(VueAxios, axios);
 import IndexComponent from './components/IndexComponent.vue';
 import QuizComponent from './components/QuizComponent.vue';
 import QuestionComponent from './components/QuestionComponent.vue';
+import AnswerListComponent from './components/AnswerListComponent.vue';
+import CreateAnswerComponent from './components/CreateAnswerComponent.vue';
 
 
 const routes = [
@@ -29,8 +31,18 @@ const routes = [
   },
   {
       name: 'question',
-      path: '/front/question',
+      path: '/front/question/:id',
       component: QuestionComponent
+  },
+  {
+      name: 'answers',
+      path: '/front/answers',
+      component: AnswerListComponent
+  },
+  {
+      name: 'createAnswer',
+      path: '/front/answer/:id/create',
+      component: CreateAnswerComponent
   }
 ];
 

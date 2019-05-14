@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'API'], function () {
     Route::get('/quizs', 'QuizController@index')->name('api.quiz.index');
     Route::get('/quiz/{quiz}', 'QuizController@show')->name('api.quiz.show');
+    Route::get('/question/{question}', 'QuestionController@show')->name('api.question.show');
     Route::post('/answer/create', 'AnswerController@store')->name('api.answer.create');
 });
