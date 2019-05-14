@@ -23,6 +23,7 @@
                 <th>{{ __('global.name') }}</th>
                 <th>{{ __('global.title') }}</th>
                 <th>{{ __('global.description') }}</th>
+                <th>{{ __('global.control') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                 <td>{{ $quiz->name }}</td>
                 <td>{{ $quiz->title }}</td>
                 <td>{{ $quiz->description }}</td>
+                <td><a class="btn btn-primary" href="{{ url(route('quiz.edit',['quiz' => $quiz->id])) }}">{{ __('global.edit') }}</a></td>
             </tr>
             @endforeach
         </tbody>
@@ -39,6 +41,7 @@
                 <th>{{ __('global.name') }}</th>
                 <th>{{ __('global.title') }}</th>
                 <th>{{ __('global.description') }}</th>
+                <th>{{ __('global.control') }}</th>
             </tr>
         </tfoot>
     </table>

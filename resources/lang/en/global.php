@@ -27,5 +27,12 @@ return [
     'create_quiz' => 'Create Quiz',
     'create' => 'Create',
     'new_quiz_created' => 'New Quiz Created',
-    'new_qustion_created' => 'New Question Created'
+    'new_qustion_created' => 'New Question Created',
+    'answer_list_component' => 'Answer List Component',
+    'create_answer' => 'Create An Answer',
+    'quiz_updated' => 'Quiz Updated',
+    'question_updated' => 'Question Updated',
+    'edit' => 'Edit',
+    'update' => 'Update',
+    'control' => 'control'
 ];

@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" style="padding: 50px 0px;">
       <div class="col-md-8">
           <div class="card card-default">
               <div class="card-header">{{ question.title }}</div>

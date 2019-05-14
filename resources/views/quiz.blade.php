@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
         <meta name="csrf-token" value="{{ csrf_token() }}" />
@@ -18,6 +18,8 @@
         background-size: cover;
         padding: 200px 0px;
         font-weight: bold;
+        font-weight: bold;
+        color: black;
         }
         .quiz h1{
             font-size: 50px;

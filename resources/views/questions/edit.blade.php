@@ -13,6 +13,7 @@
                             {{ session('success') }}
                         </div>
                     @endif
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -22,16 +23,16 @@
                             </ul>
                         </div>
                     @endif
-
                     
-                    <form method="POST" action="{{ route('question.store') }}">
+                    <form method="POST" action="{{ route('question.update', ['id' => $question->id]) }}">
                         @csrf
+                        {{ method_field('PATCH') }}
 
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('global.title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{old('title', $question->title)}}" required autocomplete="title" autofocus>
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -46,8 +47,12 @@
 
                             <div class="col-md-6">
                             <select class="form-control" name="answer_type">
-                                @foreach(["text" ,"text-image"] AS $answerType)    
+                                @foreach(["text" ,"text-image"] as $answerType) 
+                                  @if($question->answer_type == $answerType) 
+                                    <option value="{{ $answerType }}" selected>{{ $answerType }}</option>
+                                  @else
                                     <option value="{{ $answerType }}">{{ $answerType }}</option>
+                                  @endif
                                 @endforeach
                             </select>
 
@@ -64,8 +69,12 @@
 
                             <div class="col-md-6">
                             <select class="form-control" name="quiz_id">
-                                @foreach($quizs AS $quiz)    
-                                    <option value="{{ $quiz->id }}">{{ $quiz->title }}</option>
+                                @foreach($quizs as $quiz) 
+                                    @if($question->quiz_id == $quiz->id)
+                                        <option value="{{ $quiz->id }}"selected>{{ $quiz->title }}</option>
+                                    @else
+                                        <option value="{{ $quiz->id }}">{{ $quiz->title }}</option>
+                                    @endif
                                 @endforeach
                             </select>
 
@@ -80,7 +89,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('global.create') }}
+                                    {{ __('global.update') }}
                                 </button>
                             </div>
                         </div>

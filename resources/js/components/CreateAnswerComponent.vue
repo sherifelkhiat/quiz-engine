@@ -18,10 +18,10 @@
         </div>
         </div>
         <div class="row">
-          <div class="col-md-6" v-show="show === 'builder'">
+          <div class="col-md-8" v-show="show === 'builder'">
             <div class="form-group">
               <label>Result:</label>
-              <textarea class="form-control" v-model="answer.result" rows="5"></textarea>
+              <vue-editor v-model="answer.result"></vue-editor>
             </div>
           </div>
           <div class="col-md-6" v-show="show === 'url_redirect'">
@@ -41,25 +41,29 @@
 </template>
 
 <script>
+import { VueEditor } from 'vue2-editor';
     export default {
-        data(){
-            return {
-              answer:{},
-              show: 'url_redirect',
-              question_id:this.$route.params.id
-            }
-        },
-        methods: {
-            addAnswer(){
-                this.answer.question_id = this.question_id;
-                let uri = `/api/answer/create`;
-                this.axios.post(uri, this.answer).then((response) => {
-                    this.$router.push({path: `/front/question/${this.question_id}`});
-                });
-            },
-            changeItem: function changeItem(event) {
-                this.show =  event.target.value;
-            }
-        }
+      data(){
+          return {
+            answer:{},
+            show: 'url_redirect',
+            question_id:this.$route.params.id
+          }
+      },
+      methods: {
+          addAnswer(){
+              this.answer.question_id = this.question_id;
+              let uri = `/api/answer/create`;
+              this.axios.post(uri, this.answer).then((response) => {
+                  this.$router.push({path: `/front/question/${this.question_id}`});
+              });
+          },
+          changeItem: function changeItem(event) {
+              this.show =  event.target.value;
+          }
+      },
+      components: {
+         VueEditor
+      }
   }
 </script>

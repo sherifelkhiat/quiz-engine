@@ -23,6 +23,7 @@
                 <th>{{ __('global.title') }}</th>
                 <th>{{ __('global.answer_type') }}</th>
                 <th>{{ __('global.quiz_title') }}</th>
+                <th>{{ __('global.control') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@
                 @else
                 <td></td>
                 @endif
+                <td><a class="btn btn-primary" href="{{ url(route('question.edit',['question' => $question->id])) }}">{{ __('global.edit') }}</a></td>
             </tr>
             @endforeach
         </tbody>
@@ -43,6 +45,7 @@
                 <th>{{ __('global.title') }}</th>
                 <th>{{ __('global.answer_type') }}</th>
                 <th>{{ __('global.quiz_title') }}</th>
+                <th>{{ __('global.control') }}</th>
             </tr>
         </tfoot>
     </table>

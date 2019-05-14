@@ -83,7 +83,9 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        $quizs = $this->quizModel->all();
+
+        return view('questions.edit', compact('question', 'quizs'));
     }
 
     /**
@@ -95,7 +97,15 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:500',
+            'answer_type' => 'required',
+            'quiz_id' => 'required',
+        ]);
+
+        $this->model->update($request->only($this->model->getModel()->fillable), $question->id);
+        
+        return back()->withSuccess(__('global.question_updated'));
     }
 
     /**

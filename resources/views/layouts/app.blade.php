@@ -77,6 +77,7 @@
         </main>
     </div>
 
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
 

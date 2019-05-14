@@ -91,7 +91,7 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        //
+        return view('quizs.edit', compact('quiz'));
     }
 
     /**
@@ -103,7 +103,31 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:500',
+            'title' => 'required|max:500',
+            'description' => 'required|max:500',
+        ]);
+
+        $requestedData = $request->only($this->model->getModel()->fillable);
+        
+        if ($request->has('image')) {
+            $image = $request->file('image');
+
+            $extension = $image->getClientOriginalExtension();
+    
+            $imageFullName = $image->getFilename().'.'.$extension;
+    
+            Storage::disk('public')->put($imageFullName,  File::get($image));
+
+            $requestedData['image'] = url('/uploads').'/'.$imageFullName;
+        } else {
+            $imageFullName = $quiz->image;
+        }
+
+        $this->model->update($requestedData, $quiz->id);
+        
+        return back()->withSuccess(__('global.quiz_updated'));
     }
 
     /**
