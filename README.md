@@ -12,6 +12,14 @@ Installation guide:
 - run npm install
 - run npm run watch
 
+                   -------------------------------------------
+
+back-end link : http://your-website/login
+
 login credintials:
 username: admin@admin.com
 password: password
+
+                    ------------------------------------------
+
+front-end link : http://your-website/front/quizs
